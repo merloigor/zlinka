@@ -7,7 +7,7 @@ const schema_1 = require("../db/schema");
 async function getUrl(shortUrl) {
     const result = await db_1.db.select().from(schema_1.urls).where((0, drizzle_orm_1.eq)(schema_1.urls.shortUrl, shortUrl));
     if (result.length === 0) {
-        throw new Error("URL not found");
+        return null;
     }
     const originalUrl = result[0].originalUrl;
     return originalUrl;
