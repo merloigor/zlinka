@@ -3,6 +3,8 @@ import { serializerCompiler, validatorCompiler, ZodTypeProvider } from "fastify-
 import { env } from "../env";
 import { createUrlRoute } from "./routes/create-url";
 import { getUrlRoute } from "./routes/get-url";
+import swagger from '@fastify/swagger'
+import swaggerUI from '@fastify/swagger-ui';
 
 const port = env.PORT;
 
@@ -10,6 +12,26 @@ const app = fastify().withTypeProvider<ZodTypeProvider>();
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+app.register(swagger, {
+    openapi: {
+        info:{
+            title: 'API Documentation',
+            description: 'API for Zlinka app',
+            version: '1.0.0'
+        }
+    }
+});
+
+app.register(swaggerUI, {
+    routePrefix: '/docs',
+    uiConfig: {
+      docExpansion: 'full',
+      deepLinking: false,
+    },
+    staticCSP: true,
+    transformStaticCSP: (header) => header
+  });
 
 app.register(createUrlRoute);
 app.register(getUrlRoute);
