@@ -7,7 +7,7 @@ exports.getUrlRoute = void 0;
 const zod_1 = __importDefault(require("zod"));
 const get_url_1 = require("../../services/get-url");
 const getUrlRoute = async (app) => {
-    app.get('/shorten/:shortUrl', {
+    app.get('/:shortUrl', {
         schema: {
             params: zod_1.default.object({
                 shortUrl: zod_1.default.string().url(),

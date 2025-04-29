@@ -3,7 +3,7 @@ import z from "zod";
 import { getUrl } from "../../services/get-url";
 
 export const getUrlRoute: FastifyPluginAsyncZod = async (app) => {
-    app.get('/shorten/:shortUrl', {
+    app.get('/:shortUrl', {
         schema: {
             params: z.object({
                 shortUrl: z.string().url(),
