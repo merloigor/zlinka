@@ -6,7 +6,7 @@ export async function getUrl(shortUrl: string) {
     const result = await db.select().from(urls).where(eq(urls.shortUrl, shortUrl));
 
     if(result.length === 0) {
-        throw new Error("URL not found");
+        return null;
     }
     const originalUrl = result[0].originalUrl;
     return originalUrl;
