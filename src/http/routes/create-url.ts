@@ -12,4 +12,12 @@ export const createUrlRoute: FastifyPluginAsyncZod = async (app) => {
     }, async (request, reply) => {
         const { originalUrl } = request.body;
         const short = await createUrl({ originalUrl });
-    }
+
+        const shortUrlB = new URL(short, 'https://zlinka.onrender.com').toString()
+
+        return reply.status(201).send({
+            originalUrl,
+            shortUrl: shortUrlB
+          })
+    })
+}

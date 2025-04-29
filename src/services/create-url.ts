@@ -20,5 +20,5 @@ export async function createUrl({ originalUrl }: createUrlRequest) {
 
         const short_url = result[0];
 
-        return short_url;
+        return shortUrl;
 }
