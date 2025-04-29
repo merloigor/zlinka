@@ -11,7 +11,13 @@ const createUrlRoute = async (app) => {
         schema: {
             body: zod_1.default.object({
                 originalUrl: zod_1.default.string().url(),
-            })
+            }),
+            response: {
+                201: zod_1.default.object({
+                    originalUrl: zod_1.default.string().url(),
+                    shortUrl: zod_1.default.string().url(),
+                }),
+            },
         }
     }, async (request, reply) => {
         const { originalUrl } = request.body;

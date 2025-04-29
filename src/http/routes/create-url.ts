@@ -7,7 +7,13 @@ export const createUrlRoute: FastifyPluginAsyncZod = async (app) => {
         schema: {
             body: z.object({
                 originalUrl: z.string().url(),
-            })
+            }),
+            response: {
+                201: z.object({
+                    originalUrl: z.string().url(),
+                    shortUrl: z.string().url(),
+                }),
+            },
         }
     }, async (request, reply) => {
         const { originalUrl } = request.body;
