@@ -16,6 +16,11 @@ const getUrlRoute = async (app) => {
     }, async (request, reply) => {
         const { shortUrl } = request.params;
         const originalUrl = await (0, get_url_1.getUrl)(shortUrl);
+        if (!originalUrl) {
+            return reply.status(404).send({
+                message: "URL not found"
+            });
+        }
         return reply.redirect(originalUrl);
     });
 };

@@ -13,6 +13,12 @@ export const getUrlRoute: FastifyPluginAsyncZod = async (app) => {
         const { shortUrl } = request.params;
         const originalUrl = await getUrl(shortUrl);
 
+        if(!originalUrl) {
+            return reply.status(404).send({
+                message: "URL not found"
+            });
+        }
+
         return reply.redirect(originalUrl);
     })
 }
