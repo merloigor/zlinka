@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch --env-file .env src/http/server.ts",
-    "build": "node .build/src/http/server.js"
+    "build": "node ./build/src/http/server.js"
   },
   "keywords": [],
   "author": "",
