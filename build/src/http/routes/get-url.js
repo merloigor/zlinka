@@ -10,7 +10,7 @@ const getUrlRoute = async (app) => {
     app.get('/:shortUrl', {
         schema: {
             params: zod_1.default.object({
-                shortUrl: zod_1.default.string().url(),
+                shortUrl: zod_1.default.string(),
             }),
         }
     }, async (request, reply) => {

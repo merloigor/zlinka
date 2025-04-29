@@ -6,7 +6,7 @@ export const getUrlRoute: FastifyPluginAsyncZod = async (app) => {
     app.get('/:shortUrl', {
         schema: {
             params: z.object({
-                shortUrl: z.string().url(),
+                shortUrl: z.string(),
             }),
         }
     }, async (request, reply) => {
