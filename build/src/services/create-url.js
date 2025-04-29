@@ -14,6 +14,5 @@ async function createUrl({ originalUrl }) {
         originalUrl,
         shortUrl: shortUrl
     });
-    const short_url = result[0];
     return shortUrl;
 }

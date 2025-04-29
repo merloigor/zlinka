@@ -10,7 +10,7 @@ const create_url_1 = require("./routes/create-url");
 const get_url_1 = require("./routes/get-url");
 const swagger_1 = __importDefault(require("@fastify/swagger"));
 const swagger_ui_1 = __importDefault(require("@fastify/swagger-ui"));
-const port = env_1.env.PORT;
+const port = Number(env_1.env.PORT);
 const app = (0, fastify_1.default)().withTypeProvider();
 app.setValidatorCompiler(fastify_type_provider_zod_1.validatorCompiler);
 app.setSerializerCompiler(fastify_type_provider_zod_1.serializerCompiler);

@@ -16,9 +16,7 @@ export async function createUrl({ originalUrl }: createUrlRequest) {
     
     const result = await db.insert(urls).values({
         originalUrl,
-        shortUrl: shortUrl})
-
-        const short_url = result[0];
+        shortUrl: shortUrl});
 
         return shortUrl;
 }

@@ -6,7 +6,7 @@ import { getUrlRoute } from "./routes/get-url";
 import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui';
 
-const port = env.PORT;
+const port = Number(env.PORT);
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 

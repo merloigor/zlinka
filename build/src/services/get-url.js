@@ -5,10 +5,13 @@ const drizzle_orm_1 = require("drizzle-orm");
 const db_1 = require("../db");
 const schema_1 = require("../db/schema");
 async function getUrl(shortUrl) {
-    const result = await db_1.db.select().from(schema_1.urls).where((0, drizzle_orm_1.eq)(schema_1.urls.shortUrl, shortUrl));
-    if (result.length === 0) {
+    const result = await db_1.db.select({ originalUrl: schema_1.urls.originalUrl }).from(schema_1.urls).where((0, drizzle_orm_1.eq)(schema_1.urls.shortUrl, shortUrl));
+    if (!result.length) {
         return null;
     }
-    const originalUrl = result[0].originalUrl;
+    const originalUrl = result[0]?.originalUrl;
+    if (!originalUrl) {
+        return null;
+    }
     return originalUrl;
 }
