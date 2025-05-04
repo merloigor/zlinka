@@ -5,10 +5,15 @@ import { createUrlRoute } from "./routes/create-url";
 import { getUrlRoute } from "./routes/get-url";
 import swagger from '@fastify/swagger'
 import swaggerUI from '@fastify/swagger-ui';
+import fastifyCors from "@fastify/cors";
 
 const port = Number(env.PORT);
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
+
+app.register(fastifyCors, {
+    origin: '*',
+  })
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
